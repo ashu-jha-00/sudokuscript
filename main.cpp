@@ -4,11 +4,13 @@ using namespace std;
 class SudokuGrid
 {
 	int grid[9][9];
+
 public:
 	SudokuGrid()
 	{
 		menu();
 	}
+
 private:
 	void menu()
 	{
@@ -25,11 +27,11 @@ private:
 		cout << "\t   The file must have all 81 values seperated with spaces.\n";
 		cout << "\t   Blank cells must be filled in as 0 (eg; 1 0 0  2 0 0 ...).\n";
 		cout << "\t   --> ";
-		int option;
+		string option;
 		cin >> option;
-		if (option == 1)
+		if (option == "1")
 			readFromConsole();
-		else if (option == 2)
+		else if (option == "2")
 			readFromFile();
 		else
 		{
@@ -38,17 +40,17 @@ private:
 				cout << "\nYou seem to have entered an invalid option. Try again.\n";
 				cout << "\t   --> ";
 				cin >> option;
-				if (option == 1)
+				if (option == "1")
 					readFromConsole();
-				else if (option == 2)
+				else if (option == "2")
 					readFromFile();
 				else
 					continue;
-
 				break;
 			}
 		}
 	}
+
 private:
 	void readFromConsole()
 	{
@@ -83,6 +85,7 @@ private:
 		}
 		cout << endl;
 	}
+
 private:
 	void readFromFile()
 	{
@@ -113,17 +116,20 @@ private:
 		input_file.close();
 		cout << endl;
 	}
+
 public:
 	void setCellValue(int row, int col, int key)
 	{
 		grid[row][col] = key;
 	}
+
 public:
 	int getCellValue(int row, int col)
 	{
 		int cellValue = grid[row][col];
 		return cellValue;
 	}
+
 public:
 	void displayGrid()
 	{
@@ -169,6 +175,7 @@ class SudokuSolver
 {
 	int recursiveCount;
 	SudokuGrid grid;
+
 public:
 	SudokuSolver()
 	{
@@ -184,6 +191,7 @@ public:
 		displayGrid();
 		cout << "\n\n";
 	}
+
 private:
 	bool cellValueValid(int row, int col, int keyValue)
 	{
@@ -207,6 +215,7 @@ private:
 			return false;
 		return true;
 	}
+
 private:
 	bool ThreeByThreeGridValid(int row, int col, int keyValue)
 	{
@@ -233,6 +242,7 @@ private:
 
 		return true;
 	}
+
 private:
 	bool gridSolved()
 	{
@@ -257,6 +267,7 @@ private:
 
 		return true;
 	}
+
 private:
 	bool singleCellSolve()
 	{
@@ -288,6 +299,7 @@ private:
 		}
 		return false;
 	}
+
 private:
 	void solve()
 	{
@@ -302,16 +314,19 @@ private:
 			cout << "There is no correct answer for this puzzle :( \n";
 		}
 	}
+
 private:
 	void displayGrid()
 	{
 		grid.displayGrid();
 	}
+
 private:
 	void statsIncrement()
 	{
 		recursiveCount++;
 	}
+
 public:
 	void statsPrint()
 	{
@@ -321,6 +336,14 @@ public:
 
 int main()
 {
-	SudokuSolver ss;
+	int choice;
+	do
+	{
+		SudokuSolver ss;
+		cout << "Do you wish to solve another puzzle?" << endl;
+		cout << "Enter 1 to continue..." << endl;
+		cout << "Enter any other key to exit..." << endl;
+		cin >> choice;
+	} while (choice == 1);
 	return 0;
 }
