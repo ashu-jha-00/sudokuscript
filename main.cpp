@@ -14,10 +14,10 @@ public:
 private:
 	void menu()
 	{
-		cout << "\n======================\n";
-		cout << "    Sudoku Solver\n";
-		cout << "======================\n\n";
-		cout << "Welcome to Sudoku Solver!\n";
+		cout << "\n=========================================\n";
+		cout << "              Sudoku Script\n";
+		cout << "=========================================\n\n";
+		cout << "Welcome to Sudoku Script!\n";
 		cout << "Before we start, you will have to input the puzzle into this program.\n\n";
 		cout << "You can either:-\n";
 		cout << "\t1. Input the puzzle by entering the values manually. (Enter 1)\n";
@@ -67,9 +67,9 @@ private:
 				cin >> enteredValue;
 
 				if (!(enteredValue >= 0 && enteredValue <= 9))
-				{ // Checking for bounds in input.
+				{
 					while (true)
-					{ // We loop until valid input is read from user.
+					{
 						cout << "Oops! You seem to have entered a wrong value! Try again.\n";
 						cout << "Enter value for cell [" << rowIter + 1 << "][" << colIter + 1 << "] --> ";
 						cin >> enteredValue;
