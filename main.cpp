@@ -85,7 +85,7 @@ private:
 		}
 		cout << endl;
 	}
-
+//function to read from file
 private:
 	void readFromFile()
 	{
